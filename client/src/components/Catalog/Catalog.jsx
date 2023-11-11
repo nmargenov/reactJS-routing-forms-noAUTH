@@ -7,7 +7,6 @@ export const Catalog = () => {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    console.log('called');
     getAllGames()
       .then(setGames);
   }, []);
