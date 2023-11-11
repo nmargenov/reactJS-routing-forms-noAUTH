@@ -17,3 +17,8 @@ export const getGameById = async (id) =>{
     const result = await fetcher.get(BASE_URL+`/${id}`);
     return result;
 }
+
+export const deleteGameById = async (id) =>{
+    const result = await fetcher.del(BASE_URL+`/${id}`);
+    return result;
+}

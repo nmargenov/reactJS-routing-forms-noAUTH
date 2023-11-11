@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
 import styles from "./details.module.css";
-import { Link, useParams } from "react-router-dom";
-import { getGameById } from "../services/gameService";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { deleteGameById, getGameById } from "../services/gameService";
 
 export const Details = () => {
   const { id } = useParams();
   const [game, setGame] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     getGameById(id)
         .then(setGame);
   }, [id]);
 
-  function onDeleteHandler(){
+  async function onDeleteHandler(){
     const accept = confirm(`Are you sure you want to delete ${game.title}?`);
     if(accept){
-        console.log('del');
+        await deleteGameById(id);
+        navigate('/catalog');
     }
   }
 
