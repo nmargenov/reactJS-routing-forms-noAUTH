@@ -1,13 +1,36 @@
-import styles from './create.module.css';
+import { useState } from "react";
+import styles from "./create.module.css";
 
 export const Create = () => {
+  const initialValues = {
+    title: "",
+    category: "",
+    maxLevel: "",
+    imageUrl: "",
+    summary: "",
+  };
+
+  const [values, setValues] = useState(initialValues);
+
+  function onSubmit(e) {
+    e.preventDefault();
+
+    console.log(values);
+  }
+
+  function onInputChange(e) {
+    setValues((oldState) => ({ ...oldState, [e.target.name]: e.target.value }));
+  }
+
   return (
     <section id={styles["create-page"]} className={styles["auth"]}>
-      <form id={styles["create"]}>
+      <form onSubmit={onSubmit} id={styles["create"]}>
         <div className={styles["container"]}>
           <h1>Create Game</h1>
           <label htmlFor="leg-title">Legendary title:</label>
           <input
+            onChange={onInputChange}
+            value={values.title}
             type="text"
             id="title"
             name="title"
@@ -16,6 +39,8 @@ export const Create = () => {
 
           <label htmlFor="category">Category:</label>
           <input
+            onChange={onInputChange}
+            value={values.category}
             type="text"
             id="category"
             name="category"
@@ -24,6 +49,8 @@ export const Create = () => {
 
           <label htmlFor="levels">MaxLevel:</label>
           <input
+            onChange={onInputChange}
+            value={values.maxLevel}
             type="number"
             id="maxLevel"
             name="maxLevel"
@@ -33,6 +60,8 @@ export const Create = () => {
 
           <label htmlFor="game-img">Image:</label>
           <input
+            onChange={onInputChange}
+            value={values.imageUrl}
             type="text"
             id="imageUrl"
             name="imageUrl"
@@ -40,8 +69,12 @@ export const Create = () => {
           />
 
           <label htmlFor="summary">Summary:</label>
-          <textarea name="summary" id={styles["summary"]}></textarea>
-          <input className={styles["submit"]} type="submit" value="Create Game" />
+          <textarea name="summary" id={styles["summary"]} onChange={onInputChange} value={values.summary}></textarea>
+          <input
+            className={styles["submit"]}
+            type="submit"
+            value="Create Game"
+          />
         </div>
       </form>
     </section>
