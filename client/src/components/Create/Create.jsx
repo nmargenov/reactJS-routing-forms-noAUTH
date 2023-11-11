@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./create.module.css";
+import { create } from "../services/gameService";
 
 export const Create = () => {
   const initialValues = {
@@ -12,10 +13,12 @@ export const Create = () => {
 
   const [values, setValues] = useState(initialValues);
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
 
     console.log(values);
+
+    await create(values)
   }
 
   function onInputChange(e) {
