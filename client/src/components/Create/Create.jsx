@@ -1,7 +1,8 @@
 import { useState } from "react";
-import styles from "./create.module.css";
 import { create } from "../services/gameService";
 import { useNavigate } from "react-router-dom";
+
+import styles from "../shared/create-edit.module.css";
 
 export const Create = () => {
   const initialValues = {

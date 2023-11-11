@@ -49,3 +49,8 @@ textarea {
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
   transition: 0.5s;
 }
+
+.submit:hover {
+  color: white;
+  background-color: #8fa9b9;
+}

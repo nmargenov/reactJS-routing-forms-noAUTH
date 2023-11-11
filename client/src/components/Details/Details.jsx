@@ -37,9 +37,9 @@ export const Details = () => {
         </p>
 
         <div className={styles["buttons"]}>
-          <a href="#" className={styles["button"]}>
+          <Link to={`/catalog/${id}/edit`} className={styles["button"]}>
             Edit
-          </a>
+          </Link>
           <Link onClick={onDeleteHandler} className={styles["button"]}>
             Delete
           </Link>
