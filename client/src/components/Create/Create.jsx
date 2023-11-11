@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./create.module.css";
 import { create } from "../services/gameService";
+import { useNavigate } from "react-router-dom";
 
 export const Create = () => {
   const initialValues = {
@@ -13,12 +14,14 @@ export const Create = () => {
 
   const [values, setValues] = useState(initialValues);
 
+
+  const navigate = useNavigate();
+
   async function onSubmit(e) {
     e.preventDefault();
-
-    console.log(values);
-
-    await create(values)
+    await create(values);
+    setValues(initialValues);
+    navigate('/catalog');
   }
 
   function onInputChange(e) {

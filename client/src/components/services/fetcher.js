@@ -22,3 +22,4 @@ async function request(method, url,data) {
 }
 
 export const createGame = request.bind(null,'POST');
+export const get = request.bind(null,"GET");

@@ -7,3 +7,8 @@ export const create = async (data) =>{
     const result = await fetcher.createGame(BASE_URL,data);
     return result;
 }
+
+export const getAllGames = async () =>{
+    const result = await fetcher.get(BASE_URL);
+    return Object.values(result);
+}
